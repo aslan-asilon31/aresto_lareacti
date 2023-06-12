@@ -8,6 +8,7 @@ import Swal from 'sweetalert2'
 // BOOTSTRAP
 import { ProgressBar } from 'react-bootstrap'
 import Button from 'react-bootstrap/Button'
+import Row from 'react-bootstrap/Button'
 import Spinner from 'react-bootstrap/Spinner'
 import Form from 'react-bootstrap/Form';
 import { FaFileCsv} from "react-icons/fa";
@@ -15,6 +16,7 @@ import { FaFileExcel} from "react-icons/fa";
 import { FaRegFilePdf} from "react-icons/fa";
 import { FaUpload} from "react-icons/fa";
 import { FaPlusSquare} from "react-icons/fa";
+import { FaSearch} from "react-icons/fa";
 import { FaTrashAlt} from "react-icons/fa";
 import { FaEdit} from "react-icons/fa";
 import { FaEye} from "react-icons/fa";
@@ -34,17 +36,78 @@ import Footer from '../../components/backend/Footer'
 
 
 function Menu() {
+  
+  // Menu Categories Logic 
+  const [menucategories, setMenuCategories] = useState([])
+  const url = 'http://localhost:8000/api/menucategories'
 
-      
+  useEffect(() => {
+    const fetchMenuCategories = async function () {
+      try {
+        setLoading(true);
+        const response = await axios.get(url);
+        if (response.status === 200) {
+          setMenuCategories(response.data);
+        }
+      } catch (error) {
+        throw error;
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchMenuCategories();
+  }, [url]);
+
+  const fetchMenuCategories = async () => {
+    await axios.get(`http://localhost:8000/api/menucategories`).then(({data})=>{
+        setMenuCategories(data)
+    })
+  }
+
+  const deleteMenuCategories = async (id) => {
+      const isConfirm = await Swal.fire({
+          title: 'Are you sure?',
+          text: "You won't be able to revert this!",
+          icon: 'warning',
+          showCancelButton: true,
+          confirmButtonColor: '#3085d6',
+          cancelButtonColor: '#d33',
+          confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+          return result.isConfirmed
+        });
+
+        if(!isConfirm){
+          return;
+        }
+
+        await axios.delete(`http://localhost:8000/api/menucategories/${id}`).then(({data})=>{
+          Swal.fire({
+              icon:"success",
+              text:data.message
+          })
+          fetchMenuCategories()
+        }).catch(({response:{data}})=>{
+          Swal.fire({
+              text:data.message,
+              icon:"error"
+          })
+        })
+  }
+
+  // End Menu Categories Logic 
+
+
+  // Menus Logic 
   const [loading, setLoading] = useState(true)
   const [menus, setMenus] = useState([])
-  const url = 'http://localhost:8000/api/menus'
+  const url_menus = 'http://localhost:8000/api/menus'
 
   useEffect(() => {
     const fetchMenus = async function () {
       try {
         setLoading(true);
-        const response = await axios.get(url);
+        const response = await axios.get(url_menus);
         if (response.status === 200) {
           setMenus(response.data);
         }
@@ -55,7 +118,7 @@ function Menu() {
       }
     };
     fetchMenus();
-  }, [url]);
+  }, [url_menus]);
 
   if(loading)
   {
@@ -77,7 +140,6 @@ function Menu() {
           setMenus(data)
       })
   }
-
 
   const deleteMenus = async (id) => {
       const isConfirm = await Swal.fire({
@@ -110,6 +172,9 @@ function Menu() {
         })
   }
 
+  // End Menus Logic 
+
+
 
   const getFormattedDate = (dateString) => {
     const date = new Date(dateString);
@@ -127,10 +192,6 @@ function Menu() {
   const getFormattedYear = (dateString) => {
     const date = new Date(dateString);
     const options = {
-        // month: "long",
-        // weekday: "long",
-        // hour: "numeric",
-        // hour12: true,
         year: "numeric",
     };
     return date.toLocaleString(undefined, options);
@@ -159,96 +220,222 @@ function Menu() {
               {/* <!-- Content wrapper --> */}
               <div className="content-wrapper">
                 {/* <!-- Content --> */}
-    
-                <div className="container-xxl flex-grow-1 container-p-y">
+
+                <div className="container-xxl mt-3">
                   {/* <!-- Contextual Classes --> */}
     
                   <div className="card">
-                    <h5 className="card-header">Menu List</h5>
+                    <h5 className="card-header">Menu Detail</h5>
                     <div className="table-responsive text-nowrap">
                       <div className="m-3">
-                        <div className="col-12 text-white d-flex">
-                          <Form className="d-flex">
-                            <Form.Control
-                              onChange={(e) => search(e.target.value)}
-                              type="search"
-                              placeholder="Search"
-                              className="me-2"
-                              aria-label="Search"
-                            />
-                          </Form>
-                          <Button className='btn mb-3 text-white float-end  ml-3 me-2' to={"/menus/create"} style={{ backgroundColor: 'indigo' }}>
-                            <FaPlusSquare size={16} color="white"  />
-                          </Button>
-                          <Button className='btn mb-3 text-white float-end  ml-3 me-2' style={{ backgroundColor: 'indigo' }}>
-                            <FaRegFilePdf size={16} color="white"  />
-                          </Button>
-                          <Button className='btn mb-3 text-white float-end  ml-3 me-2' style={{ backgroundColor: 'indigo' }}>
-                            <FaFileExcel size={16} color="white"  />
-                          </Button>
-                          <Button className='btn mb-3 text-white float-end  ml-3 me-2' style={{ backgroundColor: 'indigo' }}>
-                            <FaFileCsv size={16} color="white"  />
-                          </Button>
-                          <Button className='btn mb-3 text-white float-end  ml-3 me-2' style={{ backgroundColor: 'indigo' }}>
-                            <FaUpload size={16} color="white"  />
-                          </Button>
-                          <div style={{ width: "300px", }}>
-                            <ProgressBar now='10' label='5%' style={{  height: "25px", backgroundColor: "indigo", fontSize: "16px" }} />
-                          </div>
-                          
-                        </div>
-                        <Table striped bordered hover>
-                          <thead>
-                            <tr>
-                              <th>Appetizer</th>
-                              <th>Entrees</th>
-                              <th>Sides</th>
-                              <th>Dessert</th>
-                              <th>Beverage</th>
-                              <th>Special</th>
-                              <th>Dietary Restriction</th>
-                              <th>Pricing</th>
-                              <th>Created At</th>
-                              <th>Action</th>
-                            </tr>
-                          </thead>
-                          <tbody>
-                            {
-                                menus.length > 0 && (
-                                    menus.map((row, key)=>(
-                                        <tr key={key}>
-                                            <td>{row.appetizer}</td>
-                                            <td>{row.entrees}</td>
-                                            <td>{row.sides}</td>
-                                            <td>{row.dessert}</td>
-                                            <td>{row.beverage}</td>
-                                            <td>{row.special}</td>
-                                            <td>{row.dietary_resctriction}</td>
-                                            <td>{row.pricing}</td>
-                                            <td>{getFormattedDate(row.created_at)} , {getFormattedYear(row.created_at)}</td>
-                                            <td>
-                                            <Button to={`/menus/show`} className='btn btn-success me-2' style={{ backgroundColor:'indigo' }}>
-                                                  <FaEye size={16} color="white"  />
-                                            </Button>
-                                            <Button to={`/menus/edit/${row.id}`} className='btn btn-success me-2' style={{ backgroundColor:'indigo' }}>
-                                                  <FaEdit size={16} color="white"  />
-                                            </Button>
-                                            <Button style={{ backgroundColor:'indigo' }} onClick={()=>deleteMenus(row.id)}>
-                                                  <FaTrashAlt size={16} color="white"  />
-                                            </Button>
-                                            </td>
-                                        </tr>
-                                    ))
-                                )
-                            }
-    
-                          </tbody>
-                        </Table>
+                      <Table striped bordered hover>
+                                          <thead>
+                                            <tr>
+                                              <th>Name</th>
+                                              <th>Image</th>
+                                              <th>category</th>
+                                            </tr>
+                                          </thead>
+                                          <tbody>
+                                            {
+                                                menus.length > 0 && (
+                                                    menus.map((row, key)=>(
+                                                        <tr key={key}>
+                                                            <td>{row.name}</td>
+                                                            <td>
+                                                                <img width="50px" src={`http://localhost:8000/storage/menus/image/${row.image}`} />
+                                                            </td>
+                                                            <td>{row.menu_categories.name}</td>
+                                                        </tr>
+                                                    ))
+                                                )
+                                            }
+                    
+                                          </tbody>
+                                  </Table>
                       </div>
                     </div>
                   </div>
                   {/* <!--/ Contextual Classes --> */}
                 </div>
+
+                <div className="container-xxl flex-grow-1 container-p-y">
+                  <div className="col-12 d-flex">
+                    <div className="col-6 m-2">
+                      <div className="card">
+                        <h5 className="card-header">Menu List
+                        <Button className='btn mb-3 text-white float-end  ml-3 me-2'  style={{ backgroundColor: 'indigo' }}>
+                            {/* {chartVisible ? 'Hide Chart' : 'Show Chart'} */} Show Chart
+                        </Button>
+                        </h5>
+                          <div className="table-responsive text-nowrap">
+                            <div className="m-3">
+                            <div className="col-12 text-white d-flex">
+                                  {/* <Form className="d-flex">
+                                    <Form.Control
+                                      onChange={(e) => search(e.target.value)}
+                                      type="search"
+                                      placeholder="Search"
+                                      className="me-2"
+                                      aria-label="Search"
+                                    />
+                                  </Form> */}
+                                  <a className='btn mb-3 text-white float-end  ml-3 me-2' href={"/menus/create"} style={{ backgroundColor: 'indigo' }}>
+                                    <FaSearch size={16} color="white"  />
+                                  </a>
+                                  <a className='btn mb-3 text-white float-end  ml-3 me-2' href={"/menus/create"} style={{ backgroundColor: 'indigo' }}>
+                                    <FaPlusSquare size={16} color="white"  />
+                                  </a>
+                                  <Button className='btn mb-3 text-white float-end  ml-3 me-2' style={{ backgroundColor: 'indigo' }}>
+                                    <FaRegFilePdf size={16} color="white"  />
+                                  </Button>
+                                  <Button className='btn mb-3 text-white float-end  ml-3 me-2' style={{ backgroundColor: 'indigo' }}>
+                                    <FaFileExcel size={16} color="white"  />
+                                  </Button>
+                                  <Button className='btn mb-3 text-white float-end  ml-3 me-2' style={{ backgroundColor: 'indigo' }}>
+                                    <FaFileCsv size={16} color="white"  />
+                                  </Button>
+                                  <Button className='btn mb-3 text-white float-end  ml-3 me-2' style={{ backgroundColor: 'indigo' }}>
+                                    <FaUpload size={16} color="white"  />
+                                  </Button>
+                                  {/* <div style={{ width: "300px", }}>
+                                    <ProgressBar now='10' label='5%' style={{  height: "25px", backgroundColor: "indigo", fontSize: "16px" }} />
+                                  </div> */}
+                                  
+                                </div>
+                                <div className="table-responsive">
+                                  <Table striped bordered hover>
+                                          <thead>
+                                            <tr>
+                                              <th>Name</th>
+                                              <th>Image</th>
+                                              <th>Desc</th>
+                                              <th>Slug</th>
+                                              <th>Created At</th>
+                                              <th>Action</th>
+                                            </tr>
+                                          </thead>
+                                          <tbody>
+                                            {
+                                                menus.length > 0 && (
+                                                    menus.map((row, key)=>(
+                                                        <tr key={key}>
+                                                            <td>{row.name}</td>
+                                                            <td>
+                                                                <img width="50px" src={`http://localhost:8000/storage/menus/image/${row.image}`} />
+                                                            </td>
+                                                            <td>{row.desc}</td>
+                                                            <td>{row.slug}</td>
+                                                            <td>{getFormattedDate(row.created_at)} , {getFormattedYear(row.created_at)}</td>
+                                                            <td>
+                                                            <Button to={`/menus/show`} className='btn btn-success me-2' style={{ backgroundColor:'indigo' }}>
+                                                                  <FaEye size={16} color="white"  />
+                                                            </Button>
+                                                            <Button to={`/menus/edit/${row.id}`} className='btn btn-success me-2' style={{ backgroundColor:'indigo' }}>
+                                                                  <FaEdit size={16} color="white"  />
+                                                            </Button>
+                                                            <Button style={{ backgroundColor:'indigo' }} onClick={()=>deleteMenus(row.id)}>
+                                                                  <FaTrashAlt size={16} color="white"  />
+                                                            </Button>
+                                                            </td>
+                                                        </tr>
+                                                    ))
+                                                )
+                                            }
+                    
+                                          </tbody>
+                                  </Table>
+                                </div>
+                            </div>
+                          </div>
+                      </div>
+                        </div>
+                        <div className="col-6 m-2">
+                        <div className="card">
+                        <h5 className="card-header">Menu Category List</h5>
+                        <div className="table-responsive text-nowrap">
+                          <div className="m-3">
+                            <div className="col-12 text-white d-flex">
+                              {/* <Form className="d-flex">
+                                <Form.Control
+                                  onChange={(e) => search(e.target.value)}
+                                  type="search"
+                                  placeholder="Search"
+                                  className="me-2"
+                                  aria-label="Search"
+                                />
+                              </Form> */}
+                              <a className='btn mb-3 text-white float-end  ml-3 me-2' href={"/menucategories/create"} style={{ backgroundColor: 'indigo' }}>
+                                <FaSearch size={16} color="white"  />
+                              </a>
+                              <a className='btn mb-3 text-white float-end  ml-3 me-2' href={"/menucategories/create"} style={{ backgroundColor: 'indigo' }}>
+                                <FaPlusSquare size={16} color="white"  />
+                              </a>
+                              <Button className='btn mb-3 text-white float-end  ml-3 me-2' style={{ backgroundColor: 'indigo' }}>
+                                <FaRegFilePdf size={16} color="white"  />
+                              </Button>
+                              <Button className='btn mb-3 text-white float-end  ml-3 me-2' style={{ backgroundColor: 'indigo' }}>
+                                <FaFileExcel size={16} color="white"  />
+                              </Button>
+                              <Button className='btn mb-3 text-white float-end  ml-3 me-2' style={{ backgroundColor: 'indigo' }}>
+                                <FaFileCsv size={16} color="white"  />
+                              </Button>
+                              <Button className='btn mb-3 text-white float-end  ml-3 me-2' style={{ backgroundColor: 'indigo' }}>
+                                <FaUpload size={16} color="white"  />
+                              </Button>
+                              {/* <div style={{ width: "300px", }}>
+                                <ProgressBar now='10' label='5%' style={{  height: "25px", backgroundColor: "indigo", fontSize: "16px" }} />
+                              </div> */}
+                              
+                            </div>
+                            <Table striped bordered hover>
+                              <thead>
+                                <tr>
+                                  <th>Menu ID</th>
+                                  <th>Name</th>
+                                  <th>Image</th>
+                                  <th>Slug</th>
+                                  <th>Created At</th>
+                                  <th>Action</th>
+                                </tr>
+                              </thead>
+                              <tbody>
+                                {
+                                    menucategories.length > 0 && (
+                                        menucategories.map((row, key)=>(
+                                            <tr key={key}>
+                                                <td>{row.menu_id}</td>
+                                                <td>{row.name}</td>
+                                                <td>
+                                                    <img width="50px" src={`http://localhost:8000/storage/menu_categories/image/${row.image}`} />
+                                                </td>
+                                                <td>{row.slug}</td>
+                                                <td>{getFormattedDate(row.created_at)} , {getFormattedYear(row.created_at)}</td>
+                                                <td>
+                                          <Button to={`/menucategories/show`} className='btn btn-success me-2' style={{ backgroundColor:'indigo' }}>
+                                                <FaEye size={16} color="white"  />
+                                          </Button>
+                                          <Button to={`/menucategories/edit/${row.id}`} className='btn btn-success me-2' style={{ backgroundColor:'indigo' }}>
+                                                <FaEdit size={16} color="white"  />
+                                          </Button>
+                                          <Button style={{ backgroundColor:'indigo' }} onClick={()=>deleteMenuCategories(row.id)}>
+                                                <FaTrashAlt size={16} color="white"  />
+                                          </Button>
+                                          </td>
+                                      </tr>
+                                    ))
+                                  )
+                                }
+                              </tbody>
+                            </Table>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+    
+
                 {/* <!-- / Content --> */}
     
                 {/* <!-- Footer --> */}

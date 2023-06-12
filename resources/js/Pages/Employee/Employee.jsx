@@ -1,12 +1,24 @@
 import React, { useEffect, useState } from 'react';
-import { BrowserRouter } from 'react-router-dom'
+import { BrowserRouter} from 'react-router-dom'
 import { useNavigate, useLocation } from 'react-router-dom';
-import Table from 'react-bootstrap/Table';
-import Button from 'react-bootstrap/Button'
 import axios from 'axios';
 import Swal from 'sweetalert2'
 
+// BOOTSTRAP
+import Table from 'react-bootstrap/Table';
+import { ProgressBar } from 'react-bootstrap'
+import Button from 'react-bootstrap/Button'
+import Spinner from 'react-bootstrap/Spinner'
 import Form from 'react-bootstrap/Form';
+import { FaFileCsv} from "react-icons/fa";
+import { FaFileExcel} from "react-icons/fa";
+import { FaRegFilePdf} from "react-icons/fa";
+import { FaUpload} from "react-icons/fa";
+import { FaPlusSquare} from "react-icons/fa";
+import { FaTrashAlt} from "react-icons/fa";
+import { FaEdit} from "react-icons/fa";
+import { FaEye} from "react-icons/fa";
+
 
 import '../../assets/backend/vendor/fonts/boxicons.css'
 import '../../assets/backend/vendor/css/core.css'
@@ -19,7 +31,6 @@ import '../../assets/backend/vendor/libs/apex-charts/apex-charts.css'
 import SideBar from '../../components/backend/SideBar'
 import TopBar from '../../components/backend/TopBar'
 import Footer from '../../components/backend/Footer'
-
 
 export default function Employee() {
 
@@ -44,7 +55,7 @@ export default function Employee() {
         let result = await fetch("http://localhost:8000/api/searchemployee/" + key);
         result = await result.json();
         setEmployees(result);
-      }
+    }
 
     const deleteEmployee = async (id) => {
         const isConfirm = await Swal.fire({
@@ -120,9 +131,26 @@ export default function Employee() {
                               aria-label="Search"
                             />
                           </Form>
-                          <a className='btn btn-primary mb-3 text-white float-end  ml-3 me-2' to={"employees/create"}>
-                          Create Employee
+                          <a className=''  href="/employees/create">
+                          <Button className='btn mb-3 text-white float-end  ml-3 me-2' style={{ backgroundColor: 'indigo' }}>
+                            <FaPlusSquare size={16} color="white"  />
+                          </Button>
                           </a>
+                          <Button className='btn mb-3 text-white float-end  ml-3 me-2' style={{ backgroundColor: 'indigo' }}>
+                            <FaRegFilePdf size={16} color="white"  />
+                          </Button>
+                          <Button className='btn mb-3 text-white float-end  ml-3 me-2' style={{ backgroundColor: 'indigo' }}>
+                            <FaFileExcel size={16} color="white"  />
+                          </Button>
+                          <Button className='btn mb-3 text-white float-end  ml-3 me-2' style={{ backgroundColor: 'indigo' }}>
+                            <FaFileCsv size={16} color="white"  />
+                          </Button>
+                          <Button className='btn mb-3 text-white float-end  ml-3 me-2' style={{ backgroundColor: 'indigo' }}>
+                            <FaUpload size={16} color="white"  />
+                          </Button>
+                          <div style={{ width: "300px", }}>
+                            <ProgressBar now='10' label='5%' style={{  height: "25px", backgroundColor: "indigo", fontSize: "16px" }} />
+                          </div>
                         </div>
                         <Table striped bordered hover>
                           <thead>
@@ -150,7 +178,7 @@ export default function Employee() {
                                             <td>{row.role}</td>
                                             <td>{row.created_at}</td>
                                             <td>
-                                                <Button to={`/employee/edit/${row.id}`} className='btn btn-success me-2'>
+                                                <Button to={`/employees/edit/${row.id}`} className='btn btn-success me-2'>
                                                     Edit
                                                 </Button>
                                                 <Button variant="danger" onClick={()=>deleteEmployee(row.id)}>

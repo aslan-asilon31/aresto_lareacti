@@ -110,6 +110,32 @@ function Booking() {
         })
   }
 
+  
+  const getFormattedDate = (dateString) => {
+    const date = new Date(dateString);
+    const options = {
+        month: "long",
+        weekday: "long",
+        hour: "2-digit",
+        minute: "2-digit",
+        hour12: true,
+        // year: "numeric",
+    };
+    return date.toLocaleString(undefined, options);
+  };
+
+  const getFormattedYear = (dateString) => {
+    const date = new Date(dateString);
+    const options = {
+        // month: "long",
+        // weekday: "long",
+        // hour: "numeric",
+        // hour12: true,
+        year: "numeric",
+    };
+    return date.toLocaleString(undefined, options);
+  };
+
   return (
 
     <>
@@ -150,7 +176,7 @@ function Booking() {
                               aria-label="Search"
                             />
                           </Form>
-                          <Button className='btn mb-3 text-white float-end  ml-3 me-2' to={"/bookings/create"} style={{ backgroundColor: 'indigo' }}>
+                          <Button className='btn mb-3 text-white float-end  ml-3 me-2' href={"/bookings/create"} style={{ backgroundColor: 'indigo' }}>
                             <FaPlusSquare size={16} color="white"  />
                           </Button>
                           <Button className='btn mb-3 text-white float-end  ml-3 me-2' style={{ backgroundColor: 'indigo' }}>
@@ -191,13 +217,14 @@ function Booking() {
                                     bookings.map((row, key)=>(
                                         <tr key={key}>
                                             <td>{row.reservation_form}</td>
+                                            <td>{row.booking_time}</td>
                                             <td>{row.guest_number}</td>
                                             <td>{row.special_request}</td>
                                             <td>{row.confirmation_message}</td>
                                             <td>{row.cancellation_policy}</td>
                                             <td>{row.contact_information}</td>
                                             <td>{row.payment_information}</td>
-                                            <td>{row.created_at}</td>
+                                            <td>{getFormattedDate(row.created_at)} , {getFormattedYear(row.created_at)}</td>
                                             <td>
                                             <Button to={`/bookings/show`} className='btn btn-success me-2' style={{ backgroundColor:'indigo' }}>
                                                   <FaEye size={16} color="white"  />

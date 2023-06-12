@@ -2,6 +2,7 @@ import React from 'react'
 import { Link, Head } from '@inertiajs/react';
 import { useNavigate, useLocation } from 'react-router-dom';
 
+
 // BOOTSTRAP
 import { FaHandHoldingUsd} from "react-icons/fa";
 
@@ -11,12 +12,12 @@ import { useState } from 'react';
 
 function SideBar({ user, header, children }) {
   const [showingNavigationDropdown, setShowingNavigationDropdown] = useState(false);
-
   const navigate = useNavigate();
   // console.log(navigate)
 
   // const locpage = useLocation();
   const isActive = navigate == '/employee' ? 'active' : '';
+
 
     return (
     <>
@@ -58,6 +59,7 @@ function SideBar({ user, header, children }) {
               </a>
             </li>
 
+
             <li className="menu-item {isActive}">
               <a href="/user" className="menu-link">
                 <i className="menu-icon tf-icons bx bx-user"></i>
@@ -97,6 +99,20 @@ function SideBar({ user, header, children }) {
               <a href="/menus" className="menu-link">
                 <i className="menu-icon tf-icons bx bx-restaurant"></i>
                 <div data-i18n="Analytics">Menus</div>
+              </a>
+            </li>
+
+            <li className="menu-item {isActive}">
+              <a href="/menudetails" className="menu-link">
+                <i className="menu-icon tf-icons bx bx-restaurant"></i>
+                <div data-i18n="Analytics">Menu Details</div>
+              </a>
+            </li>
+
+            <li className="menu-item {isActive}">
+              <a href="/menucategories" className="menu-link">
+                <i className="menu-icon tf-icons bx bx-restaurant"></i>
+                <div data-i18n="Analytics">Menu Categories</div>
               </a>
             </li>
 

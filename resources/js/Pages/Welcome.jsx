@@ -1,336 +1,778 @@
-import { Link, Head } from '@inertiajs/react';
+import '../assets/frontend/lib/animate/animate.min.css';
+import '../assets/frontend/lib/owlcarousel/assets/owl.carousel.min.css';
+import '../assets/frontend/lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css';
+import '../assets/frontend/css/bootstrap.min.css';
+import '../assets/frontend/css/style.css';
 
-export default function Welcome({ auth, laravelVersion, phpVersion }) {
+
+// IMG
+import aresto_logo_black from '../assets/frontend/img/aresto_logo_black.png';
+import hero from '../assets/frontend/img/hero.png';
+import about_1 from '../assets/frontend/img/about-1.jpg';
+import about_2 from '../assets/frontend/img/about-2.jpg';
+import about_3 from '../assets/frontend/img/about-3.jpg';
+import about_4 from '../assets/frontend/img/about-4.jpg';
+
+import menu_1 from '../assets/frontend/img/menu-1.jpg';
+import menu_2 from '../assets/frontend/img/menu-2.jpg';
+import menu_3 from '../assets/frontend/img/menu-3.jpg';
+import menu_4 from '../assets/frontend/img/menu-4.jpg';
+import menu_5 from '../assets/frontend/img/menu-5.jpg';
+import menu_6 from '../assets/frontend/img/menu-6.jpg';
+import menu_7 from '../assets/frontend/img/menu-7.jpg';
+import menu_8 from '../assets/frontend/img/menu-8.jpg';
+
+import team_1 from '../assets/frontend/img/team-1.jpg';
+import team_2 from '../assets/frontend/img/team-2.jpg';
+import team_3 from '../assets/frontend/img/team-3.jpg';
+import team_4 from '../assets/frontend/img/team-4.jpg';
+
+import testimonial_1 from '../assets/frontend/img/testimonial-1.jpg';
+import testimonial_2 from '../assets/frontend/img/testimonial-2.jpg';
+import testimonial_3 from '../assets/frontend/img/testimonial-3.jpg';
+import testimonial_4 from '../assets/frontend/img/testimonial-4.jpg';
+
+export default function Welcome() {
     return (
         <>
-            <Head title="Welcome" />
-            <div className="relative sm:flex sm:justify-center sm:items-center min-h-screen bg-dots-darker bg-center bg-gray-100 dark:bg-dots-lighter dark:bg-gray-900 selection:bg-red-500 selection:text-white">
-                <div className="sm:fixed sm:top-0 sm:right-0 p-6 text-right">
-                    {auth.user ? (
-                        <Link
-                            href={route('dashboard')}
-                            className="font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500"
-                        >
-                            Dashboard
-                        </Link>
-                    ) : (
-                        <>
-                            <Link
-                                href={route('login')}
-                                className="font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500"
-                            >
-                                Log in
-                            </Link>
+    <div className="container-xxl bg-white p-0">
 
-                            <Link
-                                href={route('register')}
-                                className="ml-4 font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500"
-                            >
-                                Register
-                            </Link>
-                        </>
-                    )}
+{/* <!-- Navbar & Hero Start --> */}
+<div className="container-xxl position-relative p-0" style={{ backgroundColor:'#61DAFB' }}>
+    <nav className="navbar">
+        <a href="" className="navbar-brand p-0">
+            
+             <img src={aresto_logo_black} alt="Logo " />
+        </a>
+        <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+            <span className="fa fa-bars"></span>
+        </button>
+            <div className="d-flex" style={{  width:"50%",fontSize:"30px"}}>
+                <a href="index.html" className=" active" style={{ color:"black" }}>Home</a>
+                <a href="about.html" className="ml-10" style={{ color:"black" }}>About</a>
+                <a href="service.html" className="ml-10" style={{ color:"black" }}>Service</a>
+                <a href="menu.html" className="ml-10" style={{ color:"black" }}>Menu</a>
+                <a href="contact.html" className="ml-10" style={{ color:"black" }}>Contact</a>
+            </div>
+            <a href="login" className="btn btn-primary py-2 px-4" style={{ color:"black" }}>Login | Register</a>
+    </nav>
+
+    <div className="container-xxl py-5 bg-dark hero-header mb-5">
+        <div className="container my-0 py-5">
+            <div className="row align-items-center g-5">
+                <div className="col-lg-6 text-center text-lg-start">
+                    <h1 className="display-3 text-white animated slideInLeft">Enjoy Our<br />Delicious Meal</h1>
+                    <p className="text-white animated slideInLeft mb-4 pb-2">
+                    Welcome to Aresto, the epitome of a 5-star restaurant experience. Indulge in a gastronomic journey as we bring you the finest flavors from Asia, America, and Europe. Our meticulously crafted menu showcases a diverse selection of mouthwatering dishes, from delectable Asian delicacies like sushi and stir-fried noodles to classic American favorites such as juicy burgers and tender grilled steaks. For those seeking a taste of Europe, our gourmet pastas, perfectly roasted meats, and irresistible desserts will transport you to the heart of the continent.
+                    </p>
+                    <a href="" className="btn btn-primary py-sm-3 px-sm-5 me-3 animated slideInLeft" style={{ color:"black" }}>Book A Table</a>
                 </div>
+                <div className="col-lg-6 text-center text-lg-end overflow-hidden">
+                    <img className="img-fluid" src={hero} alt="" />
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{/* <!-- Navbar & Hero End --> */}
 
-                <div className="max-w-7xl mx-auto p-6 lg:p-8">
-                    <div className="flex justify-center">
-                        <svg
-                            viewBox="0 0 62 65"
-                            fill="none"
-                            xmlns="http://www.w3.org/2000/svg"
-                            className="h-16 w-auto bg-gray-100 dark:bg-gray-900"
-                        >
-                            <path
-                                d="M61.8548 14.6253C61.8778 14.7102 61.8895 14.7978 61.8897 14.8858V28.5615C61.8898 28.737 61.8434 28.9095 61.7554 29.0614C61.6675 29.2132 61.5409 29.3392 61.3887 29.4265L49.9104 36.0351V49.1337C49.9104 49.4902 49.7209 49.8192 49.4118 49.9987L25.4519 63.7916C25.3971 63.8227 25.3372 63.8427 25.2774 63.8639C25.255 63.8714 25.2338 63.8851 25.2101 63.8913C25.0426 63.9354 24.8666 63.9354 24.6991 63.8913C24.6716 63.8838 24.6467 63.8689 24.6205 63.8589C24.5657 63.8389 24.5084 63.8215 24.456 63.7916L0.501061 49.9987C0.348882 49.9113 0.222437 49.7853 0.134469 49.6334C0.0465019 49.4816 0.000120578 49.3092 0 49.1337L0 8.10652C0 8.01678 0.0124642 7.92953 0.0348998 7.84477C0.0423783 7.8161 0.0598282 7.78993 0.0697995 7.76126C0.0884958 7.70891 0.105946 7.65531 0.133367 7.6067C0.152063 7.5743 0.179485 7.54812 0.20192 7.51821C0.230588 7.47832 0.256763 7.43719 0.290416 7.40229C0.319084 7.37362 0.356476 7.35243 0.388883 7.32751C0.425029 7.29759 0.457436 7.26518 0.498568 7.2415L12.4779 0.345059C12.6296 0.257786 12.8015 0.211853 12.9765 0.211853C13.1515 0.211853 13.3234 0.257786 13.475 0.345059L25.4531 7.2415H25.4556C25.4955 7.26643 25.5292 7.29759 25.5653 7.32626C25.5977 7.35119 25.6339 7.37362 25.6625 7.40104C25.6974 7.43719 25.7224 7.47832 25.7523 7.51821C25.7735 7.54812 25.8021 7.5743 25.8196 7.6067C25.8483 7.65656 25.8645 7.70891 25.8844 7.76126C25.8944 7.78993 25.9118 7.8161 25.9193 7.84602C25.9423 7.93096 25.954 8.01853 25.9542 8.10652V33.7317L35.9355 27.9844V14.8846C35.9355 14.7973 35.948 14.7088 35.9704 14.6253C35.9792 14.5954 35.9954 14.5692 36.0053 14.5405C36.0253 14.4882 36.0427 14.4346 36.0702 14.386C36.0888 14.3536 36.1163 14.3274 36.1375 14.2975C36.1674 14.2576 36.1923 14.2165 36.2272 14.1816C36.2559 14.1529 36.292 14.1317 36.3244 14.1068C36.3618 14.0769 36.3942 14.0445 36.4341 14.0208L48.4147 7.12434C48.5663 7.03694 48.7383 6.99094 48.9133 6.99094C49.0883 6.99094 49.2602 7.03694 49.4118 7.12434L61.3899 14.0208C61.4323 14.0457 61.4647 14.0769 61.5021 14.1055C61.5333 14.1305 61.5694 14.1529 61.5981 14.1803C61.633 14.2165 61.6579 14.2576 61.6878 14.2975C61.7103 14.3274 61.7377 14.3536 61.7551 14.386C61.7838 14.4346 61.8 14.4882 61.8199 14.5405C61.8312 14.5692 61.8474 14.5954 61.8548 14.6253ZM59.893 27.9844V16.6121L55.7013 19.0252L49.9104 22.3593V33.7317L59.8942 27.9844H59.893ZM47.9149 48.5566V37.1768L42.2187 40.4299L25.953 49.7133V61.2003L47.9149 48.5566ZM1.99677 9.83281V48.5566L23.9562 61.199V49.7145L12.4841 43.2219L12.4804 43.2194L12.4754 43.2169C12.4368 43.1945 12.4044 43.1621 12.3682 43.1347C12.3371 43.1097 12.3009 43.0898 12.2735 43.0624L12.271 43.0586C12.2386 43.0275 12.2162 42.9888 12.1887 42.9539C12.1638 42.9203 12.1339 42.8916 12.114 42.8567L12.1127 42.853C12.0903 42.8156 12.0766 42.7707 12.0604 42.7283C12.0442 42.6909 12.023 42.656 12.013 42.6161C12.0005 42.5688 11.998 42.5177 11.9931 42.4691C11.9881 42.4317 11.9781 42.3943 11.9781 42.3569V15.5801L6.18848 12.2446L1.99677 9.83281ZM12.9777 2.36177L2.99764 8.10652L12.9752 13.8513L22.9541 8.10527L12.9752 2.36177H12.9777ZM18.1678 38.2138L23.9574 34.8809V9.83281L19.7657 12.2459L13.9749 15.5801V40.6281L18.1678 38.2138ZM48.9133 9.14105L38.9344 14.8858L48.9133 20.6305L58.8909 14.8846L48.9133 9.14105ZM47.9149 22.3593L42.124 19.0252L37.9323 16.6121V27.9844L43.7219 31.3174L47.9149 33.7317V22.3593ZM24.9533 47.987L39.59 39.631L46.9065 35.4555L36.9352 29.7145L25.4544 36.3242L14.9907 42.3482L24.9533 47.987Z"
-                                fill="#FF2D20"
-                            />
-                        </svg>
+{/* <!-- Service Start --> */}
+<div className="container-xxl py-5">
+    <div className="container">
+        <div className="row g-4">
+            <div className="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.1s">
+                <div className="service-item rounded pt-3">
+                    <div className="p-4">
+                        <i className="fa fa-3x fa-user-tie text-primary mb-4"></i>
+                        <h5>Master Chefs</h5>
+                        <p>Diam elitr kasd sed at elitr sed ipsum justo dolor sed clita amet diam</p>
                     </div>
+                </div>
+            </div>
+            <div className="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.3s">
+                <div className="service-item rounded pt-3">
+                    <div className="p-4">
+                        <i className="fa fa-3x fa-utensils text-primary mb-4"></i>
+                        <h5>Quality Food</h5>
+                        <p>Diam elitr kasd sed at elitr sed ipsum justo dolor sed clita amet diam</p>
+                    </div>
+                </div>
+            </div>
+            <div className="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.5s">
+                <div className="service-item rounded pt-3">
+                    <div className="p-4">
+                        <i className="fa fa-3x fa-cart-plus text-primary mb-4"></i>
+                        <h5>Online Order</h5>
+                        <p>Diam elitr kasd sed at elitr sed ipsum justo dolor sed clita amet diam</p>
+                    </div>
+                </div>
+            </div>
+            <div className="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.7s">
+                <div className="service-item rounded pt-3">
+                    <div className="p-4">
+                        <i className="fa fa-3x fa-headset text-primary mb-4"></i>
+                        <h5>24/7 Service</h5>
+                        <p>Diam elitr kasd sed at elitr sed ipsum justo dolor sed clita amet diam</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{/* <!-- Service End --> */}
 
-                    <div className="mt-16">
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
-                            <a
-                                href="https://laravel.com/docs"
-                                className="scale-100 p-6 bg-white dark:bg-gray-800/50 dark:bg-gradient-to-bl from-gray-700/50 via-transparent dark:ring-1 dark:ring-inset dark:ring-white/5 rounded-lg shadow-2xl shadow-gray-500/20 dark:shadow-none flex motion-safe:hover:scale-[1.01] transition-all duration-250 focus:outline focus:outline-2 focus:outline-red-500"
-                            >
-                                <div>
-                                    <div className="h-16 w-16 bg-red-50 dark:bg-red-800/20 flex items-center justify-center rounded-full">
-                                        <svg
-                                            xmlns="http://www.w3.org/2000/svg"
-                                            fill="none"
-                                            viewBox="0 0 24 24"
-                                            strokeWidth="1.5"
-                                            className="w-7 h-7 stroke-red-500"
-                                        >
-                                            <path
-                                                strokeLinecap="round"
-                                                strokeLinejoin="round"
-                                                d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25"
-                                            />
-                                        </svg>
-                                    </div>
+{/* <!-- About Start --> */}
+<div className="container-xxl py-5">
+    <div className="container">
+        <div className="row g-5 align-items-center">
+            <div className="col-lg-6">
+                <div className="row g-3">
+                    <div className="col-6 text-start">
+                        <img className="img-fluid rounded w-100 wow zoomIn" data-wow-delay="0.1s" src={about_1} />
+                    </div>
+                    <div className="col-6 text-start">
+                        <img className="img-fluid rounded w-75 wow zoomIn" data-wow-delay="0.3s" src={about_2} style={{ marginTop:"25%" }} />
+                    </div>
+                    <div className="col-6 text-end">
+                        <img className="img-fluid rounded w-75 wow zoomIn" data-wow-delay="0.5s" src={about_3} />
+                    </div>
+                    <div className="col-6 text-end">
+                        <img className="img-fluid rounded w-100 wow zoomIn" data-wow-delay="0.7s" src={about_4} />
+                    </div>
+                </div>
+            </div>
+            <div className="col-lg-6">
+                <h5 className="section-title ff-secondary text-start text-primary fw-normal">About Us</h5>
+                <h1 className="mb-4">Welcome to <i className="fa fa-utensils text-primary me-2"></i>Aresto</h1>
+                <p className="mb-4">Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit. Aliqu diam amet diam et eos erat ipsum et lorem et sit, sed stet lorem sit.</p>
+                <p className="mb-4">Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit. Aliqu diam amet diam et eos. Clita erat ipsum et lorem et sit, sed stet lorem sit clita duo justo magna dolore erat amet</p>
+                <div className="row g-4 mb-4">
+                    <div className="col-sm-6">
+                        <div className="d-flex align-items-center border-start border-5 border-primary px-3">
+                            <h1 className="flex-shrink-0 display-5 text-primary mb-0" data-toggle="counter-up">15</h1>
+                            <div className="ps-4">
+                                <p className="mb-0">Years of</p>
+                                <h6 className="text-uppercase mb-0">Experience</h6>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="col-sm-6">
+                        <div className="d-flex align-items-center border-start border-5 border-primary px-3">
+                            <h1 className="flex-shrink-0 display-5 text-primary mb-0" data-toggle="counter-up">50</h1>
+                            <div className="ps-4">
+                                <p className="mb-0">Popular</p>
+                                <h6 className="text-uppercase mb-0">Master Chefs</h6>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <a className="btn btn-primary py-3 px-5 mt-2" href="">Read More</a>
+            </div>
+        </div>
+    </div>
+</div>
+{/* <!-- About End --> */}
 
-                                    <h2 className="mt-6 text-xl font-semibold text-gray-900 dark:text-white">
-                                        Documentation
-                                    </h2>
 
-                                    <p className="mt-4 text-gray-500 dark:text-gray-400 text-sm leading-relaxed">
-                                        Laravel has wonderful documentation covering every aspect of the framework.
-                                        Whether you are a newcomer or have prior experience with Laravel, we recommend
-                                        reading our documentation from beginning to end.
-                                    </p>
+{/* <!-- Menu Start --> */}
+<div className="container-xxl py-5">
+    <div className="container">
+        <div className="text-center wow fadeInUp" data-wow-delay="0.1s">
+            <h5 className="section-title ff-secondary text-center text-primary fw-normal">Food Menu <img src={aresto_logo_black} />  </h5>
+            <h1 className="mb-5">Most Popular Items</h1>
+        </div>
+        <div className="tab-class text-center wow fadeInUp" data-wow-delay="0.1s">
+            <ul className="nav nav-pills d-inline-flex justify-content-center border-bottom mb-5">
+                <li className="nav-item">
+                    <a className="d-flex align-items-center text-start mx-3 ms-0 pb-3 active" data-bs-toggle="pill" href="#tab-1">
+                        <i className="fa fa-coffee fa-2x text-primary"></i>
+                        <div className="ps-3">
+                            <small className="text-body">Popular</small>
+                            <h6 className="mt-n1 mb-0">Breakfast</h6>
+                        </div>
+                    </a>
+                </li>
+                <li className="nav-item">
+                    <a className="d-flex align-items-center text-start mx-3 pb-3" data-bs-toggle="pill" href="#tab-2">
+                        <i className="fa fa-hamburger fa-2x text-primary"></i>
+                        <div className="ps-3">
+                            <small className="text-body">Special</small>
+                            <h6 className="mt-n1 mb-0">Launch</h6>
+                        </div>
+                    </a>
+                </li>
+                <li className="nav-item">
+                    <a className="d-flex align-items-center text-start mx-3 me-0 pb-3" data-bs-toggle="pill" href="#tab-3">
+                        <i className="fa fa-utensils fa-2x text-primary"></i>
+                        <div className="ps-3">
+                            <small className="text-body">Lovely</small>
+                            <h6 className="mt-n1 mb-0">Dinner</h6>
+                        </div>
+                    </a>
+                </li>
+            </ul>
+            <div className="tab-content">
+                <div id="tab-1" className="tab-pane fade show p-0 active">
+                    <div className="row g-4">
+                        <div className="col-lg-6">
+                            <div className="d-flex align-items-center">
+                                <img className="flex-shrink-0 img-fluid rounded" src={menu_1} style={{width:"30%",}} />
+                                <div className="w-200 d-flex flex-column text-start ps-4">
+                                    <h5 className="d-flex justify-content-between border-bottom pb-2">
+                                        <span>Steak Sapi Wagyu  <h6 className="" style={{ textDecoration:"line-through", textDecorationThickness:"2px", }}>Rp 250</h6> <br/></span>
+                                        
+                                        <h4 className="" style={{color:"red" ,width:"180px", height:"30px",textAlign:"center"}}>Rp 175 </h4>
+                                        <h3>OFF 30%</h3>
+                                    </h5>
+                                    <small className="fst-italic">Ipsum ipsum clita erat amet dolor justo diam</small>
                                 </div>
-
-                                <svg
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    fill="none"
-                                    viewBox="0 0 24 24"
-                                    strokeWidth="1.5"
-                                    className="self-center shrink-0 stroke-red-500 w-6 h-6 mx-6"
-                                >
-                                    <path
-                                        strokeLinecap="round"
-                                        strokeLinejoin="round"
-                                        d="M4.5 12h15m0 0l-6.75-6.75M19.5 12l-6.75 6.75"
-                                    />
-                                </svg>
-                            </a>
-
-                            <a
-                                href="https://laracasts.com"
-                                className="scale-100 p-6 bg-white dark:bg-gray-800/50 dark:bg-gradient-to-bl from-gray-700/50 via-transparent dark:ring-1 dark:ring-inset dark:ring-white/5 rounded-lg shadow-2xl shadow-gray-500/20 dark:shadow-none flex motion-safe:hover:scale-[1.01] transition-all duration-250 focus:outline focus:outline-2 focus:outline-red-500"
-                            >
-                                <div>
-                                    <div className="h-16 w-16 bg-red-50 dark:bg-red-800/20 flex items-center justify-center rounded-full">
-                                        <svg
-                                            xmlns="http://www.w3.org/2000/svg"
-                                            fill="none"
-                                            viewBox="0 0 24 24"
-                                            strokeWidth="1.5"
-                                            className="w-7 h-7 stroke-red-500"
-                                        >
-                                            <path
-                                                strokeLinecap="round"
-                                                d="M15.75 10.5l4.72-4.72a.75.75 0 011.28.53v11.38a.75.75 0 01-1.28.53l-4.72-4.72M4.5 18.75h9a2.25 2.25 0 002.25-2.25v-9a2.25 2.25 0 00-2.25-2.25h-9A2.25 2.25 0 002.25 7.5v9a2.25 2.25 0 002.25 2.25z"
-                                            />
-                                        </svg>
-                                    </div>
-
-                                    <h2 className="mt-6 text-xl font-semibold text-gray-900 dark:text-white">
-                                        Laracasts
-                                    </h2>
-
-                                    <p className="mt-4 text-gray-500 dark:text-gray-400 text-sm leading-relaxed">
-                                        Laracasts offers thousands of video tutorials on Laravel, PHP, and JavaScript
-                                        development. Check them out, see for yourself, and massively level up your
-                                        development skills in the process.
-                                    </p>
+                            </div>
+                        </div>
+                        <div className="col-lg-6">
+                            <div className="d-flex align-items-center">
+                                <img className="flex-shrink-0 img-fluid rounded " src={menu_2} style={{width:"30%"}} />
+                                <div className="w-200 d-flex flex-column text-start ps-4">
+                                    <h5 className="d-flex justify-content-between border-bottom pb-2">
+                                    <span>Sate Sapi Madura  <h6 className="" style={{ textDecoration:"line-through", textDecorationThickness:"2px", }}>Rp 80k</h6> <br/></span>
+                                        
+                                        <h4 className="" style={{color:"red" ,width:"180px", height:"30px",textAlign:"center"}}>Rp 56k </h4>
+                                        <h3>OFF 30%</h3>
+                                    </h5>
+                                    <small className="fst-italic">Ipsum ipsum clita erat amet dolor justo diam</small>
                                 </div>
-
-                                <svg
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    fill="none"
-                                    viewBox="0 0 24 24"
-                                    strokeWidth="1.5"
-                                    className="self-center shrink-0 stroke-red-500 w-6 h-6 mx-6"
-                                >
-                                    <path
-                                        strokeLinecap="round"
-                                        strokeLinejoin="round"
-                                        d="M4.5 12h15m0 0l-6.75-6.75M19.5 12l-6.75 6.75"
-                                    />
-                                </svg>
-                            </a>
-
-                            <a
-                                href="https://laravel-news.com"
-                                className="scale-100 p-6 bg-white dark:bg-gray-800/50 dark:bg-gradient-to-bl from-gray-700/50 via-transparent dark:ring-1 dark:ring-inset dark:ring-white/5 rounded-lg shadow-2xl shadow-gray-500/20 dark:shadow-none flex motion-safe:hover:scale-[1.01] transition-all duration-250 focus:outline focus:outline-2 focus:outline-red-500"
-                            >
-                                <div>
-                                    <div className="h-16 w-16 bg-red-50 dark:bg-red-800/20 flex items-center justify-center rounded-full">
-                                        <svg
-                                            xmlns="http://www.w3.org/2000/svg"
-                                            fill="none"
-                                            viewBox="0 0 24 24"
-                                            strokeWidth="1.5"
-                                            className="w-7 h-7 stroke-red-500"
-                                        >
-                                            <path
-                                                strokeLinecap="round"
-                                                strokeLinejoin="round"
-                                                d="M12 7.5h1.5m-1.5 3h1.5m-7.5 3h7.5m-7.5 3h7.5m3-9h3.375c.621 0 1.125.504 1.125 1.125V18a2.25 2.25 0 01-2.25 2.25M16.5 7.5V18a2.25 2.25 0 002.25 2.25M16.5 7.5V4.875c0-.621-.504-1.125-1.125-1.125H4.125C3.504 3.75 3 4.254 3 4.875V18a2.25 2.25 0 002.25 2.25h13.5M6 7.5h3v3H6v-3z"
-                                            />
-                                        </svg>
-                                    </div>
-
-                                    <h2 className="mt-6 text-xl font-semibold text-gray-900 dark:text-white">
-                                        Laravel News
-                                    </h2>
-
-                                    <p className="mt-4 text-gray-500 dark:text-gray-400 text-sm leading-relaxed">
-                                        Laravel News is a community driven portal and newsletter aggregating all of the
-                                        latest and most important news in the Laravel ecosystem, including new package
-                                        releases and tutorials.
-                                    </p>
+                            </div>
+                        </div>
+                        <div className="col-lg-6">
+                            <div className="d-flex align-items-center">
+                                <img className="flex-shrink-0 img-fluid rounded" src={menu_3} style={{width:"30%"}} />
+                                <div className="w2100 d-flex flex-column text-start ps-4">
+                                    <h5 className="d-flex justify-content-between border-bottom pb-2">
+                                    <span>Gule Kambing Sapi  <h6 className="" style={{ textDecoration:"line-through", textDecorationThickness:"2px", }}>Rp 120k</h6> <br/></span>
+                                        
+                                        <h4 className="" style={{color:"red" ,width:"180px", height:"30px",textAlign:"center"}}>Rp 96k </h4>
+                                        <h3>OFF 20%</h3>
+                                    </h5>
+                                    <small className="fst-italic">Ipsum ipsum clita erat amet dolor justo diam</small>
                                 </div>
-
-                                <svg
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    fill="none"
-                                    viewBox="0 0 24 24"
-                                    strokeWidth="1.5"
-                                    className="self-center shrink-0 stroke-red-500 w-6 h-6 mx-6"
-                                >
-                                    <path
-                                        strokeLinecap="round"
-                                        strokeLinejoin="round"
-                                        d="M4.5 12h15m0 0l-6.75-6.75M19.5 12l-6.75 6.75"
-                                    />
-                                </svg>
-                            </a>
-
-                            <div className="scale-100 p-6 bg-white dark:bg-gray-800/50 dark:bg-gradient-to-bl from-gray-700/50 via-transparent dark:ring-1 dark:ring-inset dark:ring-white/5 rounded-lg shadow-2xl shadow-gray-500/20 dark:shadow-none flex motion-safe:hover:scale-[1.01] transition-all duration-250 focus:outline focus:outline-2 focus:outline-red-500">
-                                <div>
-                                    <div className="h-16 w-16 bg-red-50 dark:bg-red-800/20 flex items-center justify-center rounded-full">
-                                        <svg
-                                            xmlns="http://www.w3.org/2000/svg"
-                                            fill="none"
-                                            viewBox="0 0 24 24"
-                                            strokeWidth="1.5"
-                                            className="w-7 h-7 stroke-red-500"
-                                        >
-                                            <path
-                                                strokeLinecap="round"
-                                                strokeLinejoin="round"
-                                                d="M6.115 5.19l.319 1.913A6 6 0 008.11 10.36L9.75 12l-.387.775c-.217.433-.132.956.21 1.298l1.348 1.348c.21.21.329.497.329.795v1.089c0 .426.24.815.622 1.006l.153.076c.433.217.956.132 1.298-.21l.723-.723a8.7 8.7 0 002.288-4.042 1.087 1.087 0 00-.358-1.099l-1.33-1.108c-.251-.21-.582-.299-.905-.245l-1.17.195a1.125 1.125 0 01-.98-.314l-.295-.295a1.125 1.125 0 010-1.591l.13-.132a1.125 1.125 0 011.3-.21l.603.302a.809.809 0 001.086-1.086L14.25 7.5l1.256-.837a4.5 4.5 0 001.528-1.732l.146-.292M6.115 5.19A9 9 0 1017.18 4.64M6.115 5.19A8.965 8.965 0 0112 3c1.929 0 3.716.607 5.18 1.64"
-                                            />
-                                        </svg>
-                                    </div>
-
-                                    <h2 className="mt-6 text-xl font-semibold text-gray-900 dark:text-white">
-                                        Vibrant Ecosystem
-                                    </h2>
-
-                                    <p className="mt-4 text-gray-500 dark:text-gray-400 text-sm leading-relaxed">
-                                        Laravel's robust library of first-party tools and libraries, such as{' '}
-                                        <a
-                                            href="https://forge.laravel.com"
-                                            className="underline hover:text-gray-700 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500"
-                                        >
-                                            Forge
-                                        </a>
-                                        ,{' '}
-                                        <a
-                                            href="https://vapor.laravel.com"
-                                            className="underline hover:text-gray-700 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500"
-                                        >
-                                            Vapor
-                                        </a>
-                                        ,{' '}
-                                        <a
-                                            href="https://nova.laravel.com"
-                                            className="underline hover:text-gray-700 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500"
-                                        >
-                                            Nova
-                                        </a>
-                                        , and{' '}
-                                        <a
-                                            href="https://envoyer.io"
-                                            className="underline hover:text-gray-700 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500"
-                                        >
-                                            Envoyer
-                                        </a>{' '}
-                                        help you take your projects to the next level. Pair them with powerful open
-                                        source libraries like{' '}
-                                        <a
-                                            href="https://laravel.com/docs/billing"
-                                            className="underline hover:text-gray-700 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500"
-                                        >
-                                            Cashier
-                                        </a>
-                                        ,{' '}
-                                        <a
-                                            href="https://laravel.com/docs/dusk"
-                                            className="underline hover:text-gray-700 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500"
-                                        >
-                                            Dusk
-                                        </a>
-                                        ,{' '}
-                                        <a
-                                            href="https://laravel.com/docs/broadcasting"
-                                            className="underline hover:text-gray-700 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500"
-                                        >
-                                            Echo
-                                        </a>
-                                        ,{' '}
-                                        <a
-                                            href="https://laravel.com/docs/horizon"
-                                            className="underline hover:text-gray-700 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500"
-                                        >
-                                            Horizon
-                                        </a>
-                                        ,{' '}
-                                        <a
-                                            href="https://laravel.com/docs/sanctum"
-                                            className="underline hover:text-gray-700 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500"
-                                        >
-                                            Sanctum
-                                        </a>
-                                        ,{' '}
-                                        <a
-                                            href="https://laravel.com/docs/telescope"
-                                            className="underline hover:text-gray-700 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500"
-                                        >
-                                            Telescope
-                                        </a>
-                                        , and more.
-                                    </p>
+                            </div>
+                        </div>
+                        <div className="col-lg-6">
+                            <div className="d-flex align-items-center">
+                                <img className="flex-shrink-0 img-fluid rounded" src={menu_4} style={{width:"30%"}} />
+                                <div className="w2100 d-flex flex-column text-start ps-4">
+                                    <h5 className="d-flex justify-content-between border-bottom pb-2">
+                                    <span>Sapi Lada Hitam  <h6 className="" style={{ textDecoration:"line-through", textDecorationThickness:"2px", }}>Rp 150k</h6> <br/></span>
+                                        
+                                        <h4 className="" style={{color:"red" ,width:"180px", height:"30px",textAlign:"center"}}>Rp 105k </h4>
+                                        <h3>OFF 30%</h3>
+                                    </h5>
+                                    <small className="fst-italic">Ipsum ipsum clita erat amet dolor justo diam</small>
                                 </div>
                             </div>
                         </div>
                     </div>
-
-                    <div className="flex justify-center mt-16 px-6 sm:items-center sm:justify-between">
-                        <div className="text-center text-sm text-gray-500 dark:text-gray-400 sm:text-left">
-                            <div className="flex items-center gap-4">
-                                <a
-                                    href="https://github.com/sponsors/taylorotwell"
-                                    className="group inline-flex items-center hover:text-gray-700 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500"
-                                >
-                                    <svg
-                                        xmlns="http://www.w3.org/2000/svg"
-                                        fill="none"
-                                        viewBox="0 0 24 24"
-                                        strokeWidth="1.5"
-                                        className="-mt-px mr-1 w-5 h-5 stroke-gray-400 dark:stroke-gray-600 group-hover:stroke-gray-600 dark:group-hover:stroke-gray-400"
-                                    >
-                                        <path
-                                            strokeLinecap="round"
-                                            strokeLinejoin="round"
-                                            d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z"
-                                        />
-                                    </svg>
-                                    Sponsor
-                                </a>
+                </div>
+                <div id="tab-2" className="tab-pane fade show p-0">
+                    <div className="row g-4">
+                        <div className="col-lg-6">
+                            <div className="d-flex align-items-center">
+                                <img className="flex-shrink-0 img-fluid rounded" src={menu_1} style={{width:"50%"}} />
+                                <div className="w2100 d-flex flex-column text-start ps-4">
+                                    <h5 className="d-flex justify-content-between border-bottom pb-2">
+                                        <span>Chicken Burger <h6 className="">Rp 115k</h6> <br/></span>
+                                        
+                                        <h5 className="" style={{backgroundColor:"red" ,width:"150px"}}>Rp 60k</h5>
+                                    </h5>
+                                    <small className="fst-italic">Ipsum ipsum clita erat amet dolor justo diam</small>
+                                </div>
                             </div>
                         </div>
-
-                        <div className="ml-4 text-center text-sm text-gray-500 dark:text-gray-400 sm:text-right sm:ml-0">
-                            Laravel v{laravelVersion} (PHP v{phpVersion})
+                        <div className="col-lg-6">
+                            <div className="d-flex align-items-center">
+                                <img className="flex-shrink-0 img-fluid rounded" src={menu_2} style={{width:"50%"}} />
+                                <div className="w2100 d-flex flex-column text-start ps-4">
+                                    <h5 className="d-flex justify-content-between border-bottom pb-2">
+                                        <span>Chicken Burger <h6 className="">Rp 115k</h6> <br/></span>
+                                        
+                                        <h5 className="" style={{backgroundColor:"red" ,width:"150px"}}>Rp 60k</h5>
+                                    </h5>
+                                    <small className="fst-italic">Ipsum ipsum clita erat amet dolor justo diam</small>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="col-lg-6">
+                            <div className="d-flex align-items-center">
+                                <img className="flex-shrink-0 img-fluid rounded" src={menu_3} style={{width:"50%"}} />
+                                <div className="w2100 d-flex flex-column text-start ps-4">
+                                    <h5 className="d-flex justify-content-between border-bottom pb-2">
+                                        <span>Chicken Burger <h6 className="">Rp 115k</h6> <br/></span>
+                                        
+                                        <h5 className="" style={{backgroundColor:"red" ,width:"150px"}}>Rp 60k</h5>
+                                    </h5>
+                                    <small className="fst-italic">Ipsum ipsum clita erat amet dolor justo diam</small>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="col-lg-6">
+                            <div className="d-flex align-items-center">
+                                <img className="flex-shrink-0 img-fluid rounded" src={menu_4} style={{width:"50%"}} />
+                                <div className="w2100 d-flex flex-column text-start ps-4">
+                                    <h5 className="d-flex justify-content-between border-bottom pb-2">
+                                        <span>Chicken Burger <h6 className="">Rp 115k</h6> <br/></span>
+                                        
+                                        <h5 className="" style={{backgroundColor:"red" ,width:"150px"}}>Rp 60k</h5>
+                                    </h5>
+                                    <small className="fst-italic">Ipsum ipsum clita erat amet dolor justo diam</small>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="col-lg-6">
+                            <div className="d-flex align-items-center">
+                                <img className="flex-shrink-0 img-fluid rounded" src={menu_5} style={{width:"50%"}} />
+                                <div className="w2100 d-flex flex-column text-start ps-4">
+                                    <h5 className="d-flex justify-content-between border-bottom pb-2">
+                                        <span>Chicken Burger <h6 className="">Rp 115k</h6> <br/></span>
+                                        
+                                        <h5 className="" style={{backgroundColor:"red" ,width:"150px"}}>Rp 60k</h5>
+                                    </h5>
+                                    <small className="fst-italic">Ipsum ipsum clita erat amet dolor justo diam</small>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="col-lg-6">
+                            <div className="d-flex align-items-center">
+                                <img className="flex-shrink-0 img-fluid rounded" src={menu_6} style={{width:"50%"}} />
+                                <div className="w2100 d-flex flex-column text-start ps-4">
+                                    <h5 className="d-flex justify-content-between border-bottom pb-2">
+                                        <span>Chicken Burger <h6 className="">Rp 115k</h6> <br/></span>
+                                        
+                                        <h5 className="" style={{backgroundColor:"red" ,width:"150px"}}>Rp 60k</h5>
+                                    </h5>
+                                    <small className="fst-italic">Ipsum ipsum clita erat amet dolor justo diam</small>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="col-lg-6">
+                            <div className="d-flex align-items-center">
+                                <img className="flex-shrink-0 img-fluid rounded" src={menu_7} style={{width:"50%"}} />
+                                <div className="w2100 d-flex flex-column text-start ps-4">
+                                    <h5 className="d-flex justify-content-between border-bottom pb-2">
+                                        <span>Chicken Burger <h6 className="">Rp 115k</h6> <br/></span>
+                                        
+                                        <h5 className="" style={{backgroundColor:"red" ,width:"150px"}}>Rp 60k</h5>
+                                    </h5>
+                                    <small className="fst-italic">Ipsum ipsum clita erat amet dolor justo diam</small>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="col-lg-6">
+                            <div className="d-flex align-items-center">
+                                <img className="flex-shrink-0 img-fluid rounded" src={menu_8} style={{width:"50%"}} />
+                                <div className="w2100 d-flex flex-column text-start ps-4">
+                                    <h5 className="d-flex justify-content-between border-bottom pb-2">
+                                        <span>Chicken Burger <h6 className="">Rp 115k</h6> <br/></span>
+                                        
+                                        <h5 className="" style={{backgroundColor:"red" ,width:"150px"}}>Rp 60k</h5>
+                                    </h5>
+                                    <small className="fst-italic">Ipsum ipsum clita erat amet dolor justo diam</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="tab-3" className="tab-pane fade show p-0">
+                    <div className="row g-4">
+                        <div className="col-lg-6">
+                            <div className="d-flex align-items-center">
+                                <img className="flex-shrink-0 img-fluid rounded" src={menu_1} style={{width:"50%"}} />
+                                <div className="w2100 d-flex flex-column text-start ps-4">
+                                    <h5 className="d-flex justify-content-between border-bottom pb-2">
+                                        <span>Chicken Burger <h6 className="">Rp 115k</h6> <br/></span>
+                                        
+                                        <h5 className="" style={{backgroundColor:"red" ,width:"150px"}}>Rp 60k</h5>
+                                    </h5>
+                                    <small className="fst-italic">Ipsum ipsum clita erat amet dolor justo diam</small>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="col-lg-6">
+                            <div className="d-flex align-items-center">
+                                <img className="flex-shrink-0 img-fluid rounded" src={menu_2} style={{width:"50%"}} />
+                                <div className="w2100 d-flex flex-column text-start ps-4">
+                                    <h5 className="d-flex justify-content-between border-bottom pb-2">
+                                        <span>Chicken Burger <h6 className="">Rp 115k</h6> <br/></span>
+                                        
+                                        <h5 className="" style={{backgroundColor:"red" ,width:"150px"}}>Rp 60k</h5>
+                                    </h5>
+                                    <small className="fst-italic">Ipsum ipsum clita erat amet dolor justo diam</small>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="col-lg-6">
+                            <div className="d-flex align-items-center">
+                                <img className="flex-shrink-0 img-fluid rounded" src={menu_3} style={{width:"50%"}} />
+                                <div className="w2100 d-flex flex-column text-start ps-4">
+                                    <h5 className="d-flex justify-content-between border-bottom pb-2">
+                                        <span>Chicken Burger <h6 className="">Rp 115k</h6> <br/></span>
+                                        
+                                        <h5 className="" style={{backgroundColor:"red" ,width:"150px"}}>Rp 60k</h5>
+                                    </h5>
+                                    <small className="fst-italic">Ipsum ipsum clita erat amet dolor justo diam</small>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="col-lg-6">
+                            <div className="d-flex align-items-center">
+                                <img className="flex-shrink-0 img-fluid rounded" src={menu_4} style={{width:"50%"}} />
+                                <div className="w2100 d-flex flex-column text-start ps-4">
+                                    <h5 className="d-flex justify-content-between border-bottom pb-2">
+                                        <span>Chicken Burger <h6 className="">Rp 115k</h6> <br/></span>
+                                        
+                                        <h5 className="" style={{backgroundColor:"red" ,width:"150px"}}>Rp 60k</h5>
+                                    </h5>
+                                    <small className="fst-italic">Ipsum ipsum clita erat amet dolor justo diam</small>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="col-lg-6">
+                            <div className="d-flex align-items-center">
+                                <img className="flex-shrink-0 img-fluid rounded" src={menu_5} style={{width:"50%"}} />
+                                <div className="w2100 d-flex flex-column text-start ps-4">
+                                    <h5 className="d-flex justify-content-between border-bottom pb-2">
+                                        <span>Chicken Burger <h6 className="">Rp 115k</h6> <br/></span>
+                                        
+                                        <h5 className="" style={{backgroundColor:"red" ,width:"150px"}}>Rp 60k</h5>
+                                    </h5>
+                                    <small className="fst-italic">Ipsum ipsum clita erat amet dolor justo diam</small>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="col-lg-6">
+                            <div className="d-flex align-items-center">
+                                <img className="flex-shrink-0 img-fluid rounded" src={menu_6} style={{width:"50%"}} />
+                                <div className="w2100 d-flex flex-column text-start ps-4">
+                                    <h5 className="d-flex justify-content-between border-bottom pb-2">
+                                        <span>Chicken Burger <h6 className="">Rp 115k</h6> <br/></span>
+                                        
+                                        <h5 className="" style={{backgroundColor:"red" ,width:"150px"}}>Rp 60k</h5>
+                                    </h5>
+                                    <small className="fst-italic">Ipsum ipsum clita erat amet dolor justo diam</small>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="col-lg-6">
+                            <div className="d-flex align-items-center">
+                                <img className="flex-shrink-0 img-fluid rounded" src={menu_7} style={{width:"50%"}} />
+                                <div className="w2100 d-flex flex-column text-start ps-4">
+                                    <h5 className="d-flex justify-content-between border-bottom pb-2">
+                                        <span>Chicken Burger <h6 className="">Rp 115k</h6> <br/></span>
+                                        
+                                        <h5 className="" style={{backgroundColor:"red" ,width:"150px"}}>Rp 60k</h5>
+                                    </h5>
+                                    <small className="fst-italic">Ipsum ipsum clita erat amet dolor justo diam</small>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="col-lg-6">
+                            <div className="d-flex align-items-center">
+                                <img className="flex-shrink-0 img-fluid rounded" src={menu_8} style={{width:"50%"}} />
+                                <div className="w2100 d-flex flex-column text-start ps-4">
+                                    <h5 className="d-flex justify-content-between border-bottom pb-2">
+                                        <span>Chicken Burger <h6 className="">Rp 115k</h6> <br/></span>
+                                        
+                                        <h5 className="" style={{backgroundColor:"red" ,width:"150px"}}>Rp 60k</h5>
+                                    </h5>
+                                    <small className="fst-italic">Ipsum ipsum clita erat amet dolor justo diam</small>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
+        </div>
+    </div>
+</div>
+{/* <!-- Menu End --> */}
+
+
+{/* <!-- Reservation Start --> */}
+<div className="container-xxl py-5 px-0 wow fadeInUp" data-wow-delay="0.1s">
+    <div className="row g-0">
+        <div className="col-md-6">
+            <div className="video">
+                <button type="button" className="btn-play" data-bs-toggle="modal" data-src="https://www.youtube.com/embed/DWRcNpR6Kdc" data-bs-target="#videoModal">
+                    <span></span>
+                </button>
+            </div>
+        </div>
+        <div className="col-md-6 bg-dark d-flex align-items-center">
+            <div className="p-5 wow fadeInUp" data-wow-delay="0.2s">
+                <h5 className="section-title ff-secondary text-start text-primary fw-normal">Reservation</h5>
+                <h1 className="text-white mb-4">Book A Table Online</h1>
+                <form>
+                    <div className="row g-3">
+                        <div className="col-md-6">
+                            <div className="form-floating">
+                                <input type="text" className="form-control" id="name" placeholder="Your Name" />
+                                <label for="name">Your Name</label>
+                            </div>
+                        </div>
+                        <div className="col-md-6">
+                            <div className="form-floating">
+                                <input type="email" className="form-control" id="email" placeholder="Your Email" />
+                                <label for="email">Your Email</label>
+                            </div>
+                        </div>
+                        <div className="col-md-6">
+                            <div className="form-floating date" id="date3" data-target-input="nearest">
+                                <input type="text" className="form-control datetimepicker-input" id="datetime" placeholder="Date & Time" data-target="#date3" data-toggle="datetimepicker" />
+                                <label for="datetime">Date & Time</label>
+                            </div>
+                        </div>
+                        <div className="col-md-6">
+                            <div className="form-floating">
+                                <select className="form-select" id="select1">
+                                    <option value="1">People 1</option>
+                                    <option value="2">People 2</option>
+                                    <option value="3">People 3</option>
+                                </select>
+                                <label for="select1">No Of People</label>
+                                </div>
+                        </div>
+                        <div className="col-12">
+                            <div className="form-floating">
+                                <textarea className="form-control" placeholder="Special Request" id="message" style={{ height: "100px" }} ></textarea>
+                                <label for="message">Special Request</label>
+                            </div>
+                        </div>
+                        <div className="col-12">
+                            <button className="btn btn-primary w-100 py-3" type="submit">Book Now</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div className="modal fade" id="videoModal" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div className="modal-dialog">
+        <div className="modal-content rounded-0">
+            <div className="modal-header">
+                <h5 className="modal-title" id="exampleModalLabel">Youtube Video</h5>
+                <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div className="modal-body">
+                {/* <!-- 16:9 aspect ratio --> */}
+                <div className="ratio ratio-16x9">
+                    <iframe className="embed-responsive-item" src="" id="video" allowFullScreen allowscriptaccess="always"
+                        allow="autoplay"></iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{/* <!-- Reservation Start --> */}
+
+
+{/* <!-- Team Start --> */}
+<div className="container-xxl pt-5 pb-3">
+    <div className="container">
+        <div className="text-center wow fadeInUp" data-wow-delay="0.1s">
+            <h5 className="section-title ff-secondary text-center text-primary fw-normal">Team Members</h5>
+            <h1 className="mb-5">Our Master Chefs</h1>
+        </div>
+        <div className="row g-4">
+            <div className="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+                <div className="team-item text-center rounded overflow-hidden">
+                    <div className="rounded-circle overflow-hidden m-4">
+                        <img className="img-fluid" src={team_1} alt="" />
+                    </div>
+                    <h5 className="mb-0">Full Name</h5>
+                    <small>Designation</small>
+                    <div className="d-flex justify-content-center mt-3">
+                        <a className="btn btn-square btn-primary mx-1" href=""><i className="fab fa-facebook-f"></i></a>
+                        <a className="btn btn-square btn-primary mx-1" href=""><i className="fab fa-twitter"></i></a>
+                        <a className="btn btn-square btn-primary mx-1" href=""><i className="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div className="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
+                <div className="team-item text-center rounded overflow-hidden">
+                    <div className="rounded-circle overflow-hidden m-4">
+                        <img className="img-fluid" src={team_2} alt="" />
+                    </div>
+                    <h5 className="mb-0">Full Name</h5>
+                    <small>Designation</small>
+                    <div className="d-flex justify-content-center mt-3">
+                        <a className="btn btn-square btn-primary mx-1" href=""><i className="fab fa-facebook-f"></i></a>
+                        <a className="btn btn-square btn-primary mx-1" href=""><i className="fab fa-twitter"></i></a>
+                        <a className="btn btn-square btn-primary mx-1" href=""><i className="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div className="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
+                <div className="team-item text-center rounded overflow-hidden">
+                    <div className="rounded-circle overflow-hidden m-4">
+                        <img className="img-fluid" src={team_3} alt="" />
+                    </div>
+                    <h5 className="mb-0">Full Name</h5>
+                    <small>Designation</small>
+                    <div className="d-flex justify-content-center mt-3">
+                        <a className="btn btn-square btn-primary mx-1" href=""><i className="fab fa-facebook-f"></i></a>
+                        <a className="btn btn-square btn-primary mx-1" href=""><i className="fab fa-twitter"></i></a>
+                        <a className="btn btn-square btn-primary mx-1" href=""><i className="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div className="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.7s">
+                <div className="team-item text-center rounded overflow-hidden">
+                    <div className="rounded-circle overflow-hidden m-4">
+                        <img className="img-fluid" src={team_4} alt="" />
+                    </div>
+                    <h5 className="mb-0">Full Name</h5>
+                    <small>Designation</small>
+                    <div className="d-flex justify-content-center mt-3">
+                        <a className="btn btn-square btn-primary mx-1" href=""><i className="fab fa-facebook-f"></i></a>
+                        <a className="btn btn-square btn-primary mx-1" href=""><i className="fab fa-twitter"></i></a>
+                        <a className="btn btn-square btn-primary mx-1" href=""><i className="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{/* <!-- Team End --> */}
+
+
+{/* <!-- Testimonial Start --> */}
+<div className="container-xxl py-5 wow fadeInUp" data-wow-delay="0.1s">
+    <div className="container">
+        <div className="text-center">
+            <h5 className="section-title ff-secondary text-center text-primary fw-normal">Testimonial</h5>
+            <h1 className="mb-5">Our Clients Say!!!</h1>
+        </div>
+        <div className="owl-carousel testimonial-carousel">
+            <div className="testimonial-item bg-transparent border rounded p-4">
+                <i className="fa fa-quote-left fa-2x text-primary mb-3"></i>
+                <p>Dolor et eos labore, stet justo sed est sed. Diam sed sed dolor stet amet eirmod eos labore diam</p>
+                <div className="d-flex align-items-center">
+                    <img className="img-fluid flex-shrink-0 rounded-circle" src={testimonial_1} style={{ width:"50px",height:"50px", }} />
+                    <div className="ps-3">
+                        <h5 className="mb-1">Client Name</h5>
+                        <small>Profession</small>
+                    </div>
+                </div>
+            </div>
+            <div className="testimonial-item bg-transparent border rounded p-4">
+                <i className="fa fa-quote-left fa-2x text-primary mb-3"></i>
+                <p>Dolor et eos labore, stet justo sed est sed. Diam sed sed dolor stet amet eirmod eos labore diam</p>
+                <div className="d-flex align-items-center">
+                    <img className="img-fluid flex-shrink-0 rounded-circle" src={testimonial_2} style={{ width:"50px",height:"50px", }} />
+                    <div className="ps-3">
+                        <h5 className="mb-1">Client Name</h5>
+                        <small>Profession</small>
+                    </div>
+                </div>
+            </div>
+            <div className="testimonial-item bg-transparent border rounded p-4">
+                <i className="fa fa-quote-left fa-2x text-primary mb-3"></i>
+                <p>Dolor et eos labore, stet justo sed est sed. Diam sed sed dolor stet amet eirmod eos labore diam</p>
+                <div className="d-flex align-items-center">
+                    <img className="img-fluid flex-shrink-0 rounded-circle" src={testimonial_3} style={{ width:"50px",height:"50px", }} />
+                    <div className="ps-3">
+                        <h5 className="mb-1">Client Name</h5>
+                        <small>Profession</small>
+                    </div>
+                </div>
+            </div>
+            <div className="testimonial-item bg-transparent border rounded p-4">
+                <i className="fa fa-quote-left fa-2x text-primary mb-3"></i>
+                <p>Dolor et eos labore, stet justo sed est sed. Diam sed sed dolor stet amet eirmod eos labore diam</p>
+                <div className="d-flex align-items-center">
+                    <img className="img-fluid flex-shrink-0 rounded-circle" src={testimonial_4} style={{ width:"50px",height:"50px", }} />
+                    <div className="ps-3">
+                        <h5 className="mb-1">Client Name</h5>
+                        <small>Profession</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{/* <!-- Testimonial End --> */}
+
+
+{/* <!-- Footer Start --> */}
+<div className="container-fluid bg-dark text-light footer pt-5 mt-5 wow fadeIn" data-wow-delay="0.1s">
+    <div className="container py-5">
+        <div className="row g-5">
+            <div className="col-lg-3 col-md-6">
+                <h4 className="section-title ff-secondary text-start text-primary fw-normal mb-4">Company</h4>
+                <a className="btn btn-link" href="">About Us</a>
+                <a className="btn btn-link" href="">Contact Us</a>
+                <a className="btn btn-link" href="">Reservation</a>
+                <a className="btn btn-link" href="">Privacy Policy</a>
+                <a className="btn btn-link" href="">Terms & Condition</a>
+            </div>
+            <div className="col-lg-3 col-md-6">
+                <h4 className="section-title ff-secondary text-start text-primary fw-normal mb-4">Contact</h4>
+                <p className="mb-2"><i className="fa fa-map-marker-alt me-3"></i>123 Street, Jakarta, Indonesia</p>
+                <p className="mb-2"><i className="fa fa-phone-alt me-3"></i>+012 345 67890</p>
+                <p className="mb-2"><i className="fa fa-envelope me-3"></i>info@example.com</p>
+                <div className="d-flex pt-2">
+                    <a className="btn btn-outline-light btn-social" href=""><i className="fab fa-twitter"></i></a>
+                    <a className="btn btn-outline-light btn-social" href=""><i className="fab fa-facebook-f"></i></a>
+                    <a className="btn btn-outline-light btn-social" href=""><i className="fab fa-youtube"></i></a>
+                    <a className="btn btn-outline-light btn-social" href=""><i className="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+            <div className="col-lg-3 col-md-6">
+                <h4 className="section-title ff-secondary text-start text-primary fw-normal mb-4">Opening</h4>
+                <h5 className="text-light fw-normal">Monday - Saturday</h5>
+                <p>09AM - 09PM</p>
+                <h5 className="text-light fw-normal">Sunday</h5>
+                <p>10AM - 08PM</p>
+            </div>
+            <div className="col-lg-3 col-md-6">
+                <h4 className="section-title ff-secondary text-start text-primary fw-normal mb-4">Newsletter</h4>
+                <p>Dolor amet sit justo amet elitr clita ipsum elitr est.</p>
+                <div className="position-relative mx-auto" style={{ maxWidth: "400px" }} >
+                    <input className="form-control border-primary w-100 py-3 ps-4 pe-5" type="text" placeholder="Your email" />
+                    <button type="button" className="btn btn-primary py-2 position-absolute top-0 end-0 mt-2 me-2">SignUp</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div className="container">
+        <div className="copyright">
+            <div className="row">
+                <div className="col-md-6 text-center text-md-start mb-3 mb-md-0">
+                    &copy; <a className="border-bottom" href="#">AslanAsilon</a>, 
+                </div>
+                <div className="col-md-6 text-center text-md-end">
+                    <div className="footer-menu">
+                        <a href="">Home</a>
+                        <a href="">Cookies</a>
+                        <a href="">Help</a>
+                        <a href="">FQAs</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{/* // <!-- Footer End --> */}
+
+
+{/* // <!-- Back to Top --> */}
+<a href="#" className="btn btn-lg btn-primary btn-lg-square back-to-top"><i className="bi bi-arrow-up"></i></a>
+
+</div>
+
 
             <style>{`
-                .bg-dots-darker {
-                    background-image: url("data:image/svg+xml,%3Csvg width='30' height='30' viewBox='0 0 30 30' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1.22676 0C1.91374 0 2.45351 0.539773 2.45351 1.22676C2.45351 1.91374 1.91374 2.45351 1.22676 2.45351C0.539773 2.45351 0 1.91374 0 1.22676C0 0.539773 0.539773 0 1.22676 0Z' fill='rgba(0,0,0,0.07)'/%3E%3C/svg%3E");
-                }
-                @media (prefers-color-scheme: dark) {
-                    .dark\\:bg-dots-lighter {
-                        background-image: url("data:image/svg+xml,%3Csvg width='30' height='30' viewBox='0 0 30 30' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1.22676 0C1.91374 0 2.45351 0.539773 2.45351 1.22676C2.45351 1.91374 1.91374 2.45351 1.22676 2.45351C0.539773 2.45351 0 1.91374 0 1.22676C0 0.539773 0.539773 0 1.22676 0Z' fill='rgba(255,255,255,0.07)'/%3E%3C/svg%3E");
-                    }
-                }
+
             `}</style>
         </>
     );

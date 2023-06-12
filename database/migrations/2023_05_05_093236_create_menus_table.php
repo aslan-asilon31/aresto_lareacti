@@ -13,14 +13,11 @@ return new class extends Migration
     {
         Schema::create('menus', function (Blueprint $table) {
             $table->id();
-            $table->string('appetizer');
-            $table->string('entrees');
-            $table->string('sides');
-            $table->string('dessert');
-            $table->string('beverage');
-            $table->string('special');
-            $table->text('dietary_restriction');
-            $table->string('pricing');
+            $table->string('name');
+            $table->string('image');
+            $table->text('desc');
+            $table->string('slug');
+            $table->softDeletes();
             $table->timestamps();
         });
     }

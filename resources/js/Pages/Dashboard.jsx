@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react';
 import '@/assets/backend/vendor/fonts/boxicons.css'
 import '@/assets/backend/vendor/css/core.css'
 import '@/assets/backend/vendor/css/theme-default.css'
@@ -20,8 +20,27 @@ import image9 from "@/assets/backend/img/icons/unicons/cc-warning.png"
 import Sidebar from '../Components/backend/SideBar'
 import Footer from '../Components/backend/Footer'
 
+//ChartJS
+import Chart from "chart.js/auto";
+import { Line, Pie } from "react-chartjs-2";
 
 export default function Dashboard({ auth }) {
+
+  // chartjs
+  const labels = ["January", "February", "March", "April", "May", "June"];
+
+  const data = {
+    labels: labels,
+    datasets: [
+      {
+        label: "My First dataset",
+        backgroundColor: ["rgb(255, 99, 132)", "rgb(54, 162, 235)", "rgb(255, 205, 86)", "rgb(75, 192, 192)", "rgb(153, 102, 255)", "rgb(255, 159, 64)"],
+        borderColor: "rgb(255, 255, 255)",
+        data: [0, 10, 5, 2, 20, 30, 45],
+      },
+    ],
+  };
+  
     return (
         <>
         {/* <!-- Layout wrapper --> */}
@@ -34,6 +53,10 @@ export default function Dashboard({ auth }) {
     
             {/* <!-- Layout container --> */}
             <div className="layout-page">
+
+
+
+
               {/* <!-- Navbar --> */}
     
               <nav
@@ -137,12 +160,12 @@ export default function Dashboard({ auth }) {
                         <div className="d-flex align-items-end row">
                           <div className="col-sm-7">
                             <div className="card-body">
-                              <h5 className="card-title text-primary">Welcome Aslan! 🎉</h5>
+                              <h5 className="card-title text-primary">Welcome {auth.name} ! 🎉</h5>
                               <p className="mb-4">
                                 You have done <span className="fw-bold">72%</span> more sales today. Check your new badge in
                                 your profile.
-                              </p>
-    
+                                <Pie data={data} />
+                              </p>    
                               <a href="javascript:" className="btn btn-sm btn-outline-primary">View Badges</a>
                             </div>
                           </div>

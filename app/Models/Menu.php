@@ -18,13 +18,19 @@ class Menu extends Model
     use HasFactory;
 
     protected $fillable = [
-        'appetizer',
-        'entrees',
-        'sides',
-        'dessert',
-        'beverage',
-        'special',
-        'dietary_restriction',
-        'pricing',
+        'name',
+        'image',
+        'desc',
+        'slug',
     ];
+
+    public function menu_categories()
+    {
+        return $this->hasMany(MenuCategory::class);
+    }
+
+    // public function menu_category()
+    // {
+    //     return $this->belongsTo(MenuCategory::class);
+    // }
 }

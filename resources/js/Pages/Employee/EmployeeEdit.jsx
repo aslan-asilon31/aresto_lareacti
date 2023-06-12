@@ -7,7 +7,7 @@ import { useNavigate, useParams } from 'react-router-dom'
 import axios from 'axios';
 import Swal from 'sweetalert2';
 
-export default function EditUser() {
+export default function EmployeeEdit() {
   const navigate = useNavigate();
 
   const { id } = useParams()
@@ -102,7 +102,7 @@ export default function EditUser() {
                     </div>
                   )
                 }
-                <Form onSubmit={updateProduct}>
+                <Form onSubmit={updateEmployee}>
                   <Row> 
                       <Col>
                         <Form.Group controlId="Name">

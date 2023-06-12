@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use Str;
+use Storage;
 
 class UserController extends Controller
 {
@@ -12,19 +14,36 @@ class UserController extends Controller
         return User::all();
     }
 
+    
+    public function create()
+    {
+        return Inertia::render('User/UserAdd');
+    }
+
     public function store(Request $request)
     {
         $request->validate([
             'name'=>'required',
+            'image'=>'required|image',
             'email'=>'required',
+            'status'=>'required',
+            'role'=>'required',
         ]);
 
+        try{
+            $imageName = Str::random().'.'.$request->image->getClientOriginalExtension();
+            Storage::disk('public')->putFileAs('users/image', $request->image,$imageName);
+            User::create($request->post()+['image'=>$imageName]);
 
-        User::create($request->post());
-
-        return response()->json([
-            'message'=>'User Created Successfully!!'
-        ]);
+            return response()->json([
+                'message'=>'User Created Successfully!!'
+            ]);
+        }catch(\Exception $e){
+            \Log::error($e->getMessage());
+            return response()->json([
+                'message'=>'Something goes wrong while creating a User!!'
+            ],500);
+        }
     }
 
     public function show(User $user)
@@ -39,18 +58,42 @@ class UserController extends Controller
         //set validation
         $request->validate([
             'name'   => 'required',
+            'image'   => 'required',
             'email' => 'required',
+            'status' => 'required',
+            'role' => 'required',
         ]);
 
-        //update post
-        $product->update([
-            'name'     => $request->name,
-            'email'   => $request->email
-        ]);
+        try{
 
-        return response()->json([
-            'message'=>'User Updated Successfully!!'
-        ]);
+            $user->fill($request->post())->update();
+
+            if($request->hasFile('image')){
+
+                // remove old image
+                if($user->image){
+                    $exists = Storage::disk('public')->exists("user/image/{$user->image}");
+                    if($exists){
+                        Storage::disk('public')->delete("user/image/{$user->image}");
+                    }
+                }
+
+                $imageName = Str::random().'.'.$request->image->getClientOriginalExtension();
+                Storage::disk('public')->putFileAs('user/image', $request->image,$imageName);
+                $employee->image = $imageName;
+                $employee->save();
+            }
+
+            return response()->json([
+                'message'=>'Employee Updated Successfully!!'
+            ]);
+
+        }catch(\Exception $e){
+            \Log::error($e->getMessage());
+            return response()->json([
+                'message'=>'Something goes wrong while updating a employee!!'
+            ],500);
+        }
 
     }
 

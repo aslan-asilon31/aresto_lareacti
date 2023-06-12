@@ -10,6 +10,8 @@ use App\Http\Controllers\ProductDetailController;
 use App\Http\Controllers\BookingController;
 use App\Http\Controllers\ShiftController;
 use App\Http\Controllers\MenuController;
+use App\Http\Controllers\MenuDetailController;
+use App\Http\Controllers\MenuCategoryController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\OrderItemController;
 use App\Http\Controllers\InventoryController;
@@ -52,6 +54,12 @@ Route::resource('shifts',ShiftController::class);
 
 // Menu
 Route::resource('menus',MenuController::class);
+
+// Menu Detail
+Route::resource('menudetails',MenuDetailController::class);
+
+// Menu Category
+Route::resource('menucategories',MenuCategoryController::class);
 
 // Order
 Route::resource('orders',OrderController::class);

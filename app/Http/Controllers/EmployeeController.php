@@ -55,6 +55,13 @@ class EmployeeController extends Controller
         ]);
     }
 
+    public function edit(Employee $employee)
+    {
+        return response()->json([
+            'employee'=>$employee
+        ]);
+    }
+
 
     public function update(Request $request, Employee $employee)
     {

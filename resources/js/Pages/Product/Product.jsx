@@ -1,11 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import { BrowserRouter } from 'react-router-dom'
-import Table from 'react-bootstrap/Table';
-import { Link } from 'react-router-dom';
+import { BrowserRouter} from 'react-router-dom'
 import axios from 'axios';
 import Swal from 'sweetalert2'
 
 // BOOTSTRAP
+import Table from 'react-bootstrap/Table';
 import { ProgressBar } from 'react-bootstrap'
 import Button from 'react-bootstrap/Button'
 import Spinner from 'react-bootstrap/Spinner'
@@ -32,6 +31,8 @@ import SideBar from '../../components/backend/SideBar'
 import TopBar from '../../components/backend/TopBar'
 import Footer from '../../components/backend/Footer'
 
+import ProductAdd from "./ProductAdd";
+import ProductEdit from "./ProductEdit";
 
 function Product() {
 
@@ -110,6 +111,35 @@ function Product() {
         })
   }
 
+
+  
+  const getFormattedDate = (dateString) => {
+    const date = new Date(dateString);
+    const options = {
+        month: "long",
+        weekday: "long",
+        hour: "2-digit",
+        minute: "2-digit",
+        hour12: true,
+        // year: "numeric",
+    };
+    return date.toLocaleString(undefined, options);
+  };
+
+  const getFormattedYear = (dateString) => {
+    const date = new Date(dateString);
+    const options = {
+        // month: "long",
+        // weekday: "long",
+        // hour: "numeric",
+        // hour12: true,
+        year: "numeric",
+    };
+    return date.toLocaleString(undefined, options);
+  };
+
+
+
   return (
 
     <>
@@ -135,7 +165,9 @@ function Product() {
     
                 <div className="container-xxl flex-grow-1 container-p-y">
                   {/* <!-- Contextual Classes --> */}
+
     
+
                   <div className="card">
                     <h5 className="card-header">Product List</h5>
                     <div className="table-responsive text-nowrap">
@@ -150,9 +182,11 @@ function Product() {
                               aria-label="Search"
                             />
                           </Form>
-                          <Button className='btn mb-3 text-white float-end  ml-3 me-2' to={"/product/create"} style={{ backgroundColor: 'indigo' }}>
+                          <a className=''  href="/product/create">
+                          <Button className='btn mb-3 text-white float-end  ml-3 me-2' style={{ backgroundColor: 'indigo' }}>
                             <FaPlusSquare size={16} color="white"  />
                           </Button>
+                          </a>
                           <Button className='btn mb-3 text-white float-end  ml-3 me-2' style={{ backgroundColor: 'indigo' }}>
                             <FaRegFilePdf size={16} color="white"  />
                           </Button>
@@ -170,12 +204,14 @@ function Product() {
                           </div>
                           
                         </div>
+
                         <Table striped bordered hover>
                           <thead>
                             <tr>
                               <th>Name</th>
                               <th>Amount</th>
                               <th>Price</th>
+                              <th>Created At</th>
                               <th>Action</th>
                             </tr>
                           </thead>
@@ -187,16 +223,18 @@ function Product() {
                                             <td>{row.name}</td>
                                             <td>{row.amount}</td>
                                             <td>{row.price}</td>
+                                            <td>{getFormattedDate(row.created_at)} , {getFormattedYear(row.created_at)}</td>
                                             <td>
                                             <Button to={`/product/show`} className='btn btn-success me-2' style={{ backgroundColor:'indigo' }}>
                                                   <FaEye size={16} color="white"  />
                                             </Button>
-                                            <Button to={`/product/edit/${row.id}`} className='btn btn-success me-2' style={{ backgroundColor:'indigo' }}>
+                                            <a href={`/product/edit/${row.id}`} className='btn btn-success me-2' style={{ backgroundColor:'indigo' }}>
                                                   <FaEdit size={16} color="white"  />
-                                            </Button>
+                                            </a>
                                             <Button style={{ backgroundColor:'indigo' }} onClick={()=>deleteProduct(row.id)}>
                                                   <FaTrashAlt size={16} color="white"  />
                                             </Button>
+
                                             </td>
                                         </tr>
                                     ))
@@ -205,9 +243,13 @@ function Product() {
     
                           </tbody>
                         </Table>
+
+
                       </div>
                     </div>
                   </div>
+
+
                   {/* <!--/ Contextual Classes --> */}
                 </div>
                 {/* <!-- / Content --> */}
